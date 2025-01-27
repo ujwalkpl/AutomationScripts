@@ -7,7 +7,7 @@ ROSTER_FILE = "name_handle_mapping.csv"
 
 #Students Names
 students = [
-    "LastName, FirstName,
+    "LastName, FirstName",
     "LastName1, FirstName1",
     "LastName2, FirstName12",
 ]
@@ -31,12 +31,10 @@ for student in students:
     row = roster[roster['roster_identifier'] == student]
     if not row.empty:
         github_username = row.iloc[0]['github_username']
-        repo_name = f"{ASSIGNMENT_PREFIX}-{github_username}"  # Replace with the repo naming pattern
+        repo_name = f"{ASSIGNMENT_PREFIX}-{github_username}"  
 
-        # Construct the repository URL
         repo_url = f"git@github.com:{GITHUB_ORG}/{repo_name}.git"
 
-        # Clone the repository
         print(f"Cloning {repo_name} for {student}...")
         subprocess.run(["git", "clone", repo_url, os.path.join(CLONE_DIR, repo_name)])
     else:
