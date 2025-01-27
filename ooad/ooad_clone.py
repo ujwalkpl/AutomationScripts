@@ -28,6 +28,7 @@ os.makedirs(CLONE_DIR, exist_ok=True)
 
 
 for student in students:
+     #used to get the github username of the student
     row = roster[roster['roster_identifier'] == student]
     if not row.empty:
         github_username = row.iloc[0]['github_username']
